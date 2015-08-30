@@ -15,4 +15,22 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    
+    /* First (did not completely simplify)
+    * And(a=a, b=b, out=aANDb);
+    * Not(in=sel, out=NOTsel);
+    * And(a=a, b=NOTsel, out=aANDNOTsel);
+    * And(a=b, b=sel, out=bANDsel);
+    * Or(a=aANDb, b=aANDNOTsel, out=aANDbORaANDNOTsel);
+    * Or(a=aANDbORaANDNOTsel, b=bANDsel, out=out);
+    */
+    
+    
+    // Better 
+    
+    And(a=b, b=sel, out=aANDsel);
+    Not(in=sel, out=NOTsel);
+    And(a=a, b=NOTsel, out=aANDNOTsel);
+    Or(a=aANDsel, b=aANDNOTsel, out=out);
+             
 }

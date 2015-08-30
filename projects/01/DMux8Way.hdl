@@ -17,4 +17,21 @@ CHIP DMux8Way {
 
     PARTS:
     // Put your code here:
+    
+    
+    // Selectors
+    And(a=sel[0], b=sel[1], out=selAND01);
+    And(a=selAND01, b=sel[2], out=selAND012);
+    And(a=sel[1], b=sel[2], out=selAND12);
+    And(a=sel[0], b=sel[2], out=selAND02);
+    
+    //DMux Chain
+    DMux(in=in, sel=selAND012, a=fail1, b=h);
+    DMux(in=fail1, sel=selAND12, a=fail2, b=g);
+    DMux(in=fail2, sel=selAND02, a=fail3, b=f);
+    DMux(in=fail3, sel=sel[2], a=fail4, b=e);
+    DMux(in=fail4, sel=selAND01, a=fail5, b=d);
+    DMux(in=fail5, sel=sel[1], a=fail6, b=c);
+    DMux(in=fail6, sel=sel[0], a=a, b=b);
+        
 }

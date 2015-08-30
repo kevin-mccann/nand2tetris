@@ -14,4 +14,19 @@ CHIP Xor {
 
     PARTS:
     // Put your code here:
+    
+    /* Slow
+    Nand(a=a, b=a, out=ANandA);
+    Not(in=b, out=NotB);
+    And(a=a, b=NotB, out=aAndNotB);
+    And(a=ANandA, b=b, out=ANandAandB);
+    Or(a=aAndNotB, b=ANandAandB, out=out); 
+    */
+    
+    // Better
+    Nand(a=a, b=b, out=aNANDb);
+    Or(a=a, b=b, out=aORb);
+    And(a=aNANDb, b=aORb, out=out);
+       
+ 
 }

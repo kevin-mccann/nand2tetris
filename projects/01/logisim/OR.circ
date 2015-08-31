@@ -29,8 +29,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   </options>
   <mappings>
     <tool lib="6" map="Button2" name="Menu Tool"/>
-    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
     <tool lib="6" map="Button3" name="Menu Tool"/>
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
   </mappings>
   <toolbar>
     <tool lib="6" name="Poke Tool"/>
@@ -60,12 +60,12 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
     <wire from="(440,190)" to="(470,190)"/>
-    <wire from="(440,150)" to="(470,150)"/>
     <wire from="(440,70)" to="(440,90)"/>
+    <wire from="(440,150)" to="(470,150)"/>
     <wire from="(530,170)" to="(550,170)"/>
     <wire from="(370,430)" to="(470,430)"/>
-    <wire from="(550,90)" to="(550,110)"/>
     <wire from="(420,90)" to="(440,90)"/>
+    <wire from="(550,90)" to="(550,110)"/>
     <wire from="(340,470)" to="(470,470)"/>
     <wire from="(440,90)" to="(440,110)"/>
     <wire from="(400,330)" to="(470,330)"/>
@@ -81,63 +81,63 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(280,170)" to="(340,170)"/>
     <wire from="(550,110)" to="(580,110)"/>
     <wire from="(340,170)" to="(400,170)"/>
+    <wire from="(440,150)" to="(440,170)"/>
     <wire from="(340,170)" to="(340,470)"/>
     <wire from="(280,90)" to="(370,90)"/>
     <wire from="(440,70)" to="(470,70)"/>
-    <wire from="(440,150)" to="(440,170)"/>
     <wire from="(530,90)" to="(550,90)"/>
     <wire from="(550,150)" to="(550,170)"/>
-    <wire from="(520,450)" to="(760,450)"/>
-    <wire from="(370,90)" to="(420,90)"/>
     <wire from="(420,290)" to="(470,290)"/>
+    <wire from="(370,90)" to="(420,90)"/>
+    <wire from="(520,450)" to="(760,450)"/>
     <wire from="(500,330)" to="(520,330)"/>
     <wire from="(400,170)" to="(400,330)"/>
-    <comp lib="0" loc="(280,90)" name="Pin">
-      <a name="tristate" val="false"/>
+    <comp lib="0" loc="(760,450)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="6" loc="(557,48)" name="Text">
+      <a name="text" val="OR from NAND only"/>
     </comp>
     <comp lib="0" loc="(760,130)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="1" loc="(500,330)" name="NOT Gate"/>
-    <comp lib="6" loc="(175,442)" name="Text">
-      <a name="text" val="OR"/>
-    </comp>
-    <comp lib="1" loc="(500,290)" name="NOT Gate"/>
     <comp lib="1" loc="(580,310)" name="NAND Gate">
       <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="1" loc="(530,170)" name="NAND Gate">
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="0" loc="(760,450)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
     </comp>
     <comp lib="0" loc="(760,310)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="labelloc" val="east"/>
     </comp>
+    <comp lib="1" loc="(500,290)" name="NOT Gate"/>
     <comp lib="1" loc="(520,450)" name="OR Gate">
       <a name="inputs" val="2"/>
     </comp>
-    <comp lib="1" loc="(640,130)" name="NAND Gate">
-      <a name="inputs" val="2"/>
-    </comp>
+    <comp lib="1" loc="(500,330)" name="NOT Gate"/>
     <comp lib="0" loc="(280,170)" name="Pin">
       <a name="tristate" val="false"/>
     </comp>
     <comp lib="1" loc="(530,90)" name="NAND Gate">
       <a name="inputs" val="2"/>
     </comp>
-    <comp lib="6" loc="(199,290)" name="Text">
-      <a name="text" val="NAND &amp; NOT"/>
+    <comp lib="1" loc="(530,170)" name="NAND Gate">
+      <a name="inputs" val="2"/>
     </comp>
-    <comp lib="6" loc="(188,138)" name="Text">
-      <a name="text" val="NAND only"/>
+    <comp lib="6" loc="(488,405)" name="Text">
+      <a name="text" val="OR"/>
+    </comp>
+    <comp lib="0" loc="(280,90)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="6" loc="(523,249)" name="Text">
+      <a name="text" val="OR from previous gates"/>
+    </comp>
+    <comp lib="1" loc="(640,130)" name="NAND Gate">
+      <a name="inputs" val="2"/>
     </comp>
   </circuit>
 </project>

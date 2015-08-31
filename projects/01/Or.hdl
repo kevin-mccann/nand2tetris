@@ -16,6 +16,7 @@ CHIP Or {
     PARTS:
     // Put your code here:
     
+    // three NANDs == two NOTs and one NAND == one NAND and one NOT into one NAND
     Nand(a=a, b=a, out=aNandA);
     Not(in=b, out=NotB);
     Nand(a=aNandA, b=NotB, out=out);

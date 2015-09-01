@@ -54,26 +54,32 @@ CHIP ALU {
    And16(a=x, b=notX, out=zeroX);
    And16(a=y, b=notY, out=zeroY);
    
-   // ones
-   Not16(in=zeroX, out=onesX);
-   Not16(in=zeroY, out=onesY);
+   // X or Zero
+   Mux16(a=x, b=zeroX, sel=zx, out=zxOUT);
    
-   // zx-nx zy-ny
-   DMux4Way16(a=x, b=zeroX, c=notX, d=onesX, sel[0]=zx, sel[1]=nx, out=modX);
-   DMux4Way16(a=y, b=zeroY, c=notY, d=onesY, sel[0]=zx, sel[1]=nx, out=modY);
+   // zxOUT or NOTzxOUT
+   Not16(in=zxOUT, out=NOTzxOUT);
+   Mux16(a=zxOUT, b=NOTzxOUT, sel=nx, out=modX);
    
-   // modX AND modY
-   And16(a=modX, b=modY, out=modXandmodY);
+   // Y or Zero
+   Mux16(a=y, b=zeroY, sel=zy, out=zyOUT);
    
-   // modX + modY
-   Add16(a=modX, b=modY, out=modXplusmodY);
+   // zyOUT our NOTzyOUT
+   Not16(in=zyOUT, out=NOTzyOUT);
+   Mux16(a=zyOUT, b=NOTzyOUT, sel=ny, out=modY);
    
-   // not out
-   Not16(in=modXandmodY, out=notmodXandmodY);
-   Not16(in=modXplusmodY, out=notmodXplusmodY);
+   // AND or ADD modX and modY
+   And16(a=modX, b=modY, out=modXANDmodY);
+   Add16(a=modX, b=modY, out=modXORmodY);
+   Mux16(a=modXANDmodY, b=modXORmodY, sel=f, out=funcOUT);
    
-   // funt or not choice
-   DMux4Way16(a=modXandmodY, b=modXplusmodY, c=notmodXandmodY, d=notmodXplusmodY, sel[0]=f, sel[1]=no, out=out, out[15]=ng, out=zerotest);
+   // func or not
+   Not16(in=funcOUT, out=NOTfuncOUT);
+   // for zero the -1 way below
+   Mux16(a=funcOUT, b=NOTfuncOUT, sel=no, out[15]=ng, out[15]=MSD, out=zerotest, out=out);
+   // for zero the OR way below
+   // Mux16(a=funcOUT, b=NOTfuncOUT, sel=no, out[15]=MSD, out[0..7]=half1, out[7..14]=half2, out=out);
+   
    
    
    // zero? the -1 way
@@ -81,9 +87,17 @@ CHIP ALU {
    Not(in=poszr, out=negzr);
    Mux(a=poszr, b=negzr, sel=MSD, out=zr);
    
+   /* zero? the OR way
+    * Or8Way(in=half1, out=half1or);
+    * Or8Way(in=half2, out=half2or);
+    * Or(a=half1or, b=half2or, out=notzr);
+    * Not(in=notzr, out=zr);
+   */
+   
    
    // negative?
    // No chip needed - pin15 on output > 1==neg, 0==pos
+   // Xor(a=MSD, b=false, out=ng);
    
    
    

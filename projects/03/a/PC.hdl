@@ -17,4 +17,15 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+    
+    // Load Mux array
+    Mux(a=load, b=inc, sel=inc, out=IncLoad);
+    Mux(a=IncLoad, b=reset, sel=reset, out=IncLoadReset);
+    
+    Mux16(a=plus1, b=in, sel=load, out=out1);
+    Mux16(a=out1, b=false, sel=reset, out=out2);
+    Register(in=out2, load=IncLoadReset, out=outloop, out=out);
+    Inc16(in=outloop, out=plus1);
+
+    
 }

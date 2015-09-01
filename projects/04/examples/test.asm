@@ -1,0 +1,14 @@
+@R0
+D=M
+@X
+D-1;JNE
+@R1
+M=O
+@END
+0;JMP
+(X)
+@R1
+M=1
+(END)
+@END
+0;JMP
